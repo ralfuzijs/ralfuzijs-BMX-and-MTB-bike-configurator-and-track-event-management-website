@@ -3,7 +3,7 @@
 
 ### Project Description:
 
-This project is a user-oriented web platform that offers a BMX bike configuration tool and an MTB/BMX track map. The platform aims to provide both amateur and experienced riders with the ability to customize their BMX bikes according to their needs and preferences, as well as to offer information about nearby MTB/BMX parks.
+This project is a user-oriented web platform that offers a BMX bike configuration tool and an MTB/BMX track map. The platform aims to allow both amateur and experienced riders to customize their BMX bikes according to their needs and preferences and to offer information about nearby MTB/BMX parks.
 
 ### Key Features:
 #### 1. BMX/MTB Size Calculator:
@@ -34,7 +34,7 @@ This project is a user-oriented web platform that offers a BMX bike configuratio
 
 Cycling enthusiasts, BMX and MTB athletes, hobby riders, and anyone looking for an interactive tool to design and customize their bike or find nearby tracks.
 
-The development of the project focuses on user convenience, intuitive design, and technological solutions that will enhance user engagement and provide precise and up-to-date information.
+The project's development focuses on user convenience, intuitive design, and technological solutions that will enhance user engagement and provide precise and up-to-date information.
 
 
 
