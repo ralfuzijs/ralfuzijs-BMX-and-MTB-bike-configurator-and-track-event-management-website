@@ -3,7 +3,7 @@
 
 ### Project Description:
 
-This project is a user-oriented web platform that offers a BMX bike configuration tool and an MTB/BMX track map. The platform aims to allow both amateur and experienced riders to customize their BMX bikes according to their needs and preferences and to offer information about nearby MTB/BMX parks.
+This project is a user-oriented web platform that offers a BMX bike configuration tool and an MTB/BMX track map. The platform aims to allow amateur and experienced riders to customize their BMX bikes according to their needs and preferences and to offer information about nearby MTB/BMX parks.
 
 ### Key Features:
 #### 1. BMX/MTB Size Calculator:
@@ -14,7 +14,7 @@ This project is a user-oriented web platform that offers a BMX bike configuratio
 #### 3. MTB/BMX Track Map:
 - A map displaying MTB and BMX tracks in Latvia, providing detailed information on each track.
 #### 4. User Profile:
-- Users can create accounts, save their BMX configurations, and access them at any time, as well as receive notifications about events at their favorite MTB/BMX parks.
+- Users can create accounts, save their BMX configurations, access them at any time, and receive notifications about events at their favorite MTB/BMX parks.
 
 ### Project Goals:
 - Provide users with the ability to customize their BMX bikes online using an intuitive configurator.
@@ -39,3 +39,11 @@ The project's development focuses on user convenience, intuitive design, and tec
 
 
 > Note: `If anyone has a better idea of how to implement my project or suggestions for improvements, feel free to let me know.`
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+## Pievienotās funkcijas un pašlaika plāni
+
+### Pievienotās funkcijas:
+- **Pievienots Excel fails ar mājaslapas testēšanas rezultātiem.
+
+### Funkcijas, pie kurām pašlaik strādājam:
+- **Strādāju pie tā, lai mājaslapa darbotos ar Vue framework.
