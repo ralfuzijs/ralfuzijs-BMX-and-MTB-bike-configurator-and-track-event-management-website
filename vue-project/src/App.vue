@@ -1,14 +1,17 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, RouterView, useRoute } from 'vue-router';
+import { computed } from 'vue';
 import HeaderComponent from '@/components/header-component.vue';
+
+const route = useRoute();
+const showHeader = computed(() => route.name !== 'admin');
 </script>
 
 <template>
-  <HeaderComponent />
+  <HeaderComponent v-if="showHeader" />
 
   <RouterView />
 </template>
-
 
 <style scoped>
 header {
