@@ -17,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/tracks', require('./routes/tracks'));
+app.use('/api/users', require('./routes/users'));
 
 // Default route
 app.get('/', (req, res) => {

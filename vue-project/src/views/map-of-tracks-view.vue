@@ -30,7 +30,8 @@ onMounted(async () => {
 
     // Use proper public folder paths with forward slashes
     const blueIcon = new BikeIcon({iconUrl: '/images/bike_point_blue.png'}),
-          orangeIcon = new BikeIcon({iconUrl: '/images/bike_point_orange.png'});
+          orangeIcon = new BikeIcon({iconUrl: '/images/bike_point_orange.png'}),
+          greenIcon = new BikeIcon({iconUrl: '/images/bike_point_green.png'});
     
     // Create layer groups
     const skateparks = L.layerGroup([]);
@@ -57,7 +58,7 @@ onMounted(async () => {
                         .bindPopup(`<b>${track.name}</b><br>${track.description || ''}`);
                     pumptracks.addLayer(marker);
                 } else if (track.type === 'bmx_track') {
-                    marker = L.marker([lat, lng], {icon: orangeIcon})
+                    marker = L.marker([lat, lng], {icon: greenIcon})
                         .bindPopup(`<b>${track.name}</b><br>${track.description || ''}`);
                     bmx_tracks.addLayer(marker);
                 }

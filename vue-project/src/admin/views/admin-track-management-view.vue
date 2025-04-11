@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, defineEmits } from 'vue';
+import { ref, onMounted, defineEmits, computed } from 'vue';
 
 const emit = defineEmits(['message']);
 
@@ -21,6 +21,33 @@ const currentEditId = ref(null);
 const deleteConfirmation = ref(false);
 const trackToDelete = ref(null);
 const activeView = ref('list'); // 'list' or 'add'
+
+// Filter state
+const searchQuery = ref('');
+const typeFilter = ref('all'); // 'all', 'skatepark', 'pumptrack', 'bmx_track'
+
+// Computed property for filtered tracks
+const filteredTracks = computed(() => {
+  return allTracks.value.filter(track => {
+    // Apply type filter
+    if (typeFilter.value !== 'all' && track.type !== typeFilter.value) {
+      return false;
+    }
+    
+    // Apply search query filter
+    if (searchQuery.value && !track.name.toLowerCase().includes(searchQuery.value.toLowerCase())) {
+      return false;
+    }
+    
+    return true;
+  });
+});
+
+// Clear all filters
+function clearFilters() {
+  searchQuery.value = '';
+  typeFilter.value = 'all';
+}
 
 // Functions for track management
 async function fetchTracks() {
@@ -202,18 +229,9 @@ onMounted(() => {
   <div class="content-section">
     <div class="section-header">
       <h1>Track Management</h1>
-      <!-- Remove the All Tracks button from the header when in add view -->
-      <div class="view-controls" v-if="activeView === 'list'">
-        <button 
-          :class="{ active: activeView === 'list' }" 
-          @click="changeView('list')"
-        >
-          <i class="fas fa-list"></i> All Tracks
-        </button>
-      </div>
     </div>
     
-    <!-- Add New Track Button - only visible when in list view -->
+    <!-- Add New Track Button and Clear Filters - only visible when in list view -->
     <div v-if="activeView === 'list'" class="add-track-button-container">
       <button 
         class="add-track-button"
@@ -221,6 +239,37 @@ onMounted(() => {
       >
         <i class="fas fa-plus"></i> Add New Track
       </button>
+      
+      <button 
+        @click="clearFilters" 
+        class="clear-filters-button"
+        v-if="searchQuery || typeFilter !== 'all'"
+      >
+        <i class="fas fa-times"></i> Clear Filters
+      </button>
+    </div>
+    
+    <!-- Filters section - only visible in list view -->
+    <div v-if="activeView === 'list'" class="filters-section">
+      <div class="filter-row">
+        <div class="search-filter">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="Search tracks..." 
+            class="search-input"
+          >
+        </div>
+        
+        <div class="type-filter">
+          <select v-model="typeFilter">
+            <option value="all">All Types</option>
+            <option value="skatepark">Skatepark</option>
+            <option value="pumptrack">Pumptrack</option>
+            <option value="bmx_track">BMX Track</option>
+          </select>
+        </div>
+      </div>
     </div>
     
     <!-- Add/Edit Track Form -->
@@ -314,6 +363,10 @@ onMounted(() => {
         No tracks found. Add some tracks first.
       </div>
       
+      <div v-else-if="filteredTracks.length === 0" class="no-tracks">
+        No tracks match your filters. Try different filters or add new tracks.
+      </div>
+      
       <table v-else class="tracks-table">
         <thead>
           <tr>
@@ -324,7 +377,7 @@ onMounted(() => {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="track in allTracks" :key="track._id">
+          <tr v-for="track in filteredTracks" :key="track._id">
             <td>{{ track.name }}</td>
             <td>
               <span :class="'type-badge ' + track.type">
@@ -392,6 +445,7 @@ onMounted(() => {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 .section-header {
@@ -462,6 +516,7 @@ button {
 .delete-button {
   background-color: #e74c3c;
   color: white;
+  height: 40px;
 }
 
 .edit-button {
@@ -650,6 +705,45 @@ button:disabled {
   color: #666;
 }
 
+/* Updated styles for the buttons container */
+.add-track-button-container {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Style for Add New Track button stays the same */
+.add-track-button {
+  background-color: #27ae60;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+  margin-top: 30px;
+}
+
+/* Updated style for Clear Filters button */
+.clear-filters-button {
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  margin-left: 200px; /* Added margin to move it to the right */
+  margin-top: 30px; /* Added margin to move it down */
+}
+
 /* New styles for the add track button */
 .add-track-button-container {
   margin-bottom: 15px;
@@ -675,6 +769,56 @@ button:disabled {
 
 .add-track-button i {
   font-size: 14px;
+}
+
+/* Add these new styles for filters */
+.filters-section {
+  margin-top: 50px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-filter {
+  flex: 1;
+}
+
+.search-input {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.type-filter select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  min-width: 150px;
+}
+
+.clear-filters-button {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.clear-filters-button:hover {
+  background-color: #e0e0e0;
 }
 
 /* Responsive adjustments */

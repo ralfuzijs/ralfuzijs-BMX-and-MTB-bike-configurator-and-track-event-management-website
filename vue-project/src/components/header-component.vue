@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView, RouterLink } from 'vue-router';
 import { useDarkMode } from '../composables/useDarkMode';
 
 const { isDarkMode, toggleDarkMode } = useDarkMode();
@@ -8,12 +8,17 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
 <template>
   <main>
     <header>
-
         <!-- Dark mode Button -->
         <button @click="toggleDarkMode"> 
             <img src="/images/day-and-night.png" alt="Dark Mode Toggle" />
         </button>
         <!-- Dark mode Button -->
+
+        <!-- User Button -->
+        <RouterLink to="/login" class="user-button">
+            <i class="fas fa-user"></i>
+        </RouterLink>
+        <!-- User Button -->
 
         <h1>BMX/MTB</h1>
 
@@ -105,10 +110,12 @@ footer a:hover {
 button {
     padding: 8px 10px;
     position: absolute; 
-    left: 40px;
+    left: 25px;
+    top: 20px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    margin-top: 1px;
 }
 
 .dark-mode button {
@@ -155,7 +162,22 @@ button {
 }
 /* changes the dark/light modes ---------------------------------------------- */
 
+/* User button styles */
+.user-button {
+    position: absolute;
+    right: 40px;
+    top: 30px;
+    color: white;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
 
+.dark-mode .user-button {
+    color: black;
+}
 
 /* Dropdown Menu ------------------------------------------------------------- */
 .dropdown {

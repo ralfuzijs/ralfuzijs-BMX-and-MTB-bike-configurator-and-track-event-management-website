@@ -132,6 +132,7 @@ const handleLogin = async () => {
 
 .form-group {
   margin-bottom: 15px;
+  width: 94%;
 }
 
 .form-group label {
@@ -168,6 +169,7 @@ const handleLogin = async () => {
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  margin-left: 538px;
   transition: background-color 0.2s;
 }
 
@@ -182,7 +184,7 @@ const handleLogin = async () => {
 
 .back-link {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 80px;
 }
 
 .back-link a {

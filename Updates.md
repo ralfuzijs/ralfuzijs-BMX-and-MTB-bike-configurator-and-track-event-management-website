@@ -27,11 +27,21 @@
   - Implemented secure token-based session management
   - Added user credentials validation 
 
+- **11.04.2025**
+  - Designed and implemented MongoDB user schema
+  - Added comprehensive JWT-based authentication system
+  - Created user registration and login API endpoints
+  - Set up secure password hashing with bcrypt
+  - Implemented user profile and account management
+  - Added login activity tracking with IP and timestamp logging
+  - Created role-based authorization middleware
+  - Connected user authentication to frontend components
+
 ## Pending Tasks
-- [ ] Implement user authentication for admin features
+- [x] Implement user authentication for admin features
 - [ ] Add a bike size calculator page
 - [ ] Develop a bike configurator tool with 2D/3D visualization
-- [ ] Create a user profile page for saving configurations
+- [x] Create a user profile page for saving configurations
 - [ ] Change colors for the frontend
 - [ ] Improve error handling and validation in the backend
 - [ ] Optimize frontend performance for production
