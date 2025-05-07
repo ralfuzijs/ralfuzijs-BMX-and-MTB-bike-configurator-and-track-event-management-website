@@ -14,7 +14,7 @@ This project is a user-oriented web platform that offers a BMX bike configuratio
 #### 3. MTB/BMX Track Map:
 - A map displaying MTB and BMX tracks in Latvia, providing detailed information on each track.
 #### 4. User Profile:
-- Users can create accounts, save their BMX configurations, access them at any time, and receive notifications about events at their favorite MTB/BMX parks.
+- Users can create accounts, save their BMX configurations, and access them at any time.
 
 ### Project Goals:
 - Provide users with the ability to customize their BMX bikes online using an intuitive configurator.
@@ -25,16 +25,8 @@ This project is a user-oriented web platform that offers a BMX bike configuratio
 
 Cycling enthusiasts, BMX and MTB athletes, hobby riders, and anyone looking for an interactive tool to design and customize their bike or find nearby tracks.
 
-The project's development focuses on user convenience, intuitive design, and technological solutions that will enhance user engagement and provide precise and up-to-date information.
+The project's development focuses on user convenience, intuitive design, and technological solutions that will enhance user engagement.
 
 
 
 > Note: `If anyone has a better idea of how to implement my project or suggestions for improvements, feel free to let me know.`
-----------------------------------------------------------------------------------------------------------------------------------------------------------
-## Pievienotās funkcijas un pašlaika plāni
-
-### Pievienotās funkcijas:
-- **Pievienots Excel fails ar mājaslapas testēšanas rezultātiem.
-- **Beidzot strādā mājaslapa ar vue.js framework.
-
-### Funkcijas, pie kurām pašlaik strādājam:
